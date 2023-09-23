@@ -1,5 +1,18 @@
-import '@/styles/globals.css'
+import '../styles/globals.css';
+import { QueryClient, QueryClientProvider, Hydrate } from 'react-query'
 
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+
+// create a query client
+const queryclient = new QueryClient();
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <QueryClientProvider client={queryclient}>
+      <Hydrate state={pageProps.dehydratedState}>
+        <Component {...pageProps} />
+      </Hydrate>
+    </QueryClientProvider>
+  ) 
 }
+
+export default MyApp

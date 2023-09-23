@@ -45,7 +45,7 @@ export async function createChat(req, res){
     // const completion = await openai.createCompletion({
     //     model : "gpt-3.5-turbo-instruct",
     //     prompt : question,
-    //     temperature : 0.5,
+    //     temperature : 0.5, 
     //     max_tokens : 100,
     //     top_p : 1
     // })
