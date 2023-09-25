@@ -1,6 +1,6 @@
 import Message from '../models/message.model';
 import Room from '../models/room.model'
-const OpenAI = require("openai");
+import OpenAI from 'openai';
 import ENV from '../config.env'
 
 /** GET: http://localhost:3000/api/chat/roomid */
@@ -42,23 +42,23 @@ export async function createChat(req, res){
 
     // const openai = new OpenAIApi(config);
 
-    // const completion = await openai.createCompletion({
-    //     model : "gpt-3.5-turbo-instruct",
-    //     prompt : question,
-    //     temperature : 0.5, 
-    //     max_tokens : 100,
-    //     top_p : 1
-    // })
-      try{
-        const completion = await openai.completions.create({
-            model: "text-davinci-003",
-            prompt: question,
-            max_tokens: 30,
-          });
-      } catch(err) {
-        console.error(err);
-        return res.status(400).json({ error: "Error generating response" });
-    }
+    const completion = await openai.createCompletion({
+        model : "text-davinci-003",
+        prompt : question,
+        temperature : 0.5, 
+        max_tokens : 100,
+        top_p : 1
+    })
+    //   try{
+    //     const completion = await openai.ChatCompletion.create({
+    //         model: "gpt-3.5-turbo",
+    //         prompt: question,
+    //         max_tokens: 30,
+    //       });
+    //   } catch(err) {
+    //     console.error(err);
+    //     return res.status(400).json({ error: "Error generating response" });
+    // }
     const message = new Message({
         question,
         answer : completion.choices[0].text,
