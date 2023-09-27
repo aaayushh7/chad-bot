@@ -64,7 +64,7 @@ export async function createChat(req, res){
         answer : completion.choices[0].text,
         room : roomid
     })
-
+    
     //tried chat completion 
     // const openFun=async()=>{
     //     const chatCompletion = await openai.chat.completions.create({
