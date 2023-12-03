@@ -18,8 +18,8 @@ export default function Home() {
   const { isLoading, isError, data, error } = useQuery('rooms', getAllRooms)
   
   if(isLoading) return <Loading></Loading>;
-  // if(isError) return <div className='text-center'>Error : {error.message}</div>
-  // if(!data) return <div className="text-c enter">No Messages</div>
+  if(isError) return <div className='text-center'>Error : {error.message}</div>
+  if(!data) return <div className="text-c enter">No Messages</div>
 
   function onRoomClick(roomid) {
     data.filter(room => {
