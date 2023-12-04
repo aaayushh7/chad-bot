@@ -52,7 +52,7 @@ export async function createChat(req, res){
         completion = await openai.ChatCompletion.create({
             model: "gpt-3.5-turbo",
             prompt: question,
-            max_tokens: 30,
+            max_tokens: 300,
         });
     } catch(err) {
         console.error(err);

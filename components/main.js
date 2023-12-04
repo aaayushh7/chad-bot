@@ -10,8 +10,8 @@ export default ({ roomid }) => {
     const { isLoading, isError, data : messages, error }  = useQuery(['messages', roomid], () => getMessages(roomid));
 
     if(isLoading) return <Loading></Loading>
-    // if(isError) return <div className="text-center">Error: {error.message}</div>
-    // if(messages.length === 0) return <NotFound></NotFound>
+    if(isError) return <div className="text-center">Error: {error.message}</div>
+    if(messages.length === 0) return <NotFound></NotFound>
 
     return (
         <main className="container mx-auto w-3/5 py-5">
